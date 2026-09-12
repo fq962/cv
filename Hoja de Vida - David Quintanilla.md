@@ -1,6 +1,6 @@
 # **David F. Quintanilla**
 
-Ingeniero de Software con más de 2 años de experiencia
+Ingeniero de Software con más de 4 años de experiencia
 
 🌏︎ San Pedro Sula, Honduras
 
