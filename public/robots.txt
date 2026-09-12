@@ -14,4 +14,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://dfquintanilla.com/sitemap-index.xml
+Sitemap: https://dfquintanilla.dev/sitemap-index.xml

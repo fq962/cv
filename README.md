@@ -131,10 +131,10 @@ Genera `public/og/default.png`, una tarjeta por proyecto con `id`, los iconos PW
 
 ### Después de publicar
 
-1. Dar de alta el sitio en [Google Search Console](https://search.google.com/search-console) y enviar `https://dfquintanilla.com/sitemap-index.xml`.
+1. Dar de alta el sitio en [Google Search Console](https://search.google.com/search-console) y enviar `https://dfquintanilla.dev/sitemap-index.xml`.
 2. Validar los datos estructurados en la [prueba de resultados enriquecidos](https://search.google.com/test/rich-results).
 3. Revisar cómo se ven las previsualizaciones en el [depurador de LinkedIn](https://www.linkedin.com/post-inspector/) y en el [de Facebook](https://developers.facebook.com/tools/debug/).
 
 ## 🔑 Licencia
 
-[MIT](LICENSE.txt) — plantilla original de [**midudev**](https://midu.dev), adaptada por [**fq962**](https://dfquintanilla.com).
+[MIT](LICENSE.txt) — plantilla original de [**midudev**](https://midu.dev), adaptada por [**fq962**](https://dfquintanilla.dev).
