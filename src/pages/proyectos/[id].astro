@@ -1,0 +1,240 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+
+import Layout from "../../layouts/Layout.astro";
+import { projects, basics } from "../../../cv.json";
+import {
+  personSchema,
+  websiteSchema,
+  projectSchema,
+  projectPageSchema,
+  breadcrumbSchema,
+} from "../../schema";
+
+export function getStaticPaths() {
+  return projects
+    .filter((project) => Boolean(project.id))
+    .map((project) => ({
+      params: { id: project.id },
+      props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+const {
+  id,
+  name,
+  role,
+  period,
+  isActive,
+  description,
+  longDescription = [],
+  highlights,
+  skills = [],
+  url,
+} = project;
+
+const links =
+  (project as { links?: { label: string; url: string }[] }).links ?? [];
+
+const screenshotsDir = path.join(process.cwd(), "public", "projects-screenshots");
+
+const screenshots = [1, 2, 3].map((index) => {
+  const file = `${id}-0${index}.webp`;
+  return {
+    file,
+    src: `/projects-screenshots/${file}`,
+    exists: fs.existsSync(path.join(screenshotsDir, file)),
+  };
+});
+
+const allLinks = links.length > 0 ? links : url ? [{ label: "Visitar el proyecto", url }] : [];
+
+const seoTitle = `${name} — Proyecto de ${basics.name}`;
+const seoDescription = longDescription[0] ?? description;
+const seoKeywords = [
+  name,
+  ...highlights,
+  ...skills.map((skill) => skill.name),
+  basics.name,
+  "Proyecto",
+  "Portafolio",
+];
+---
+
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  type="article"
+  image={`/og/${id}.png`}
+  imageAlt={`${name} — ${description}`}
+  keywords={seoKeywords}
+  article={{ section: "Proyectos", tags: highlights }}
+  schema={[
+    projectSchema(project),
+    projectPageSchema(project),
+    breadcrumbSchema([
+      { name: "Inicio", path: "/" },
+      { name: "Proyectos", path: "/#proyectos" },
+      { name, path: `/proyectos/${id}` },
+    ]),
+    personSchema(),
+    websiteSchema(),
+  ]}
+>
+  <main class="m-auto w-full p-4 md:p-16">
+    <section class="max-w-[700px] mx-auto">
+      <nav aria-label="Ruta de navegación" class="text-sm text-gray-500">
+        <ol class="flex flex-wrap items-center gap-2">
+          <li>
+            <a
+              href="/"
+              class="hover:text-black hover:underline transition-colors duration-300"
+            >
+              Inicio
+            </a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li>
+            <a
+              href="/#proyectos"
+              class="hover:text-black hover:underline transition-colors duration-300"
+            >
+              Proyectos
+            </a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="text-black">{name}</li>
+        </ol>
+      </nav>
+
+      <header class="mt-6">
+        <h1 class="text-3xl md:text-5xl font-bold text-black text-balance">
+          {name}
+          {isActive && <span class="text-green-500">•</span>}
+        </h1>
+
+        {
+          (role || period) && (
+            <p class="mt-2 text-base text-gray-600">
+              {[role, period].filter(Boolean).join(" · ")}
+            </p>
+          )
+        }
+
+        <p class="mt-4 text-base leading-relaxed">{description}</p>
+
+        {
+          allLinks.length > 0 && (
+            <ul class="mt-5 flex flex-wrap gap-2">
+              {allLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block bg-gray-200/70 hover:bg-gray-200 transition-colors duration-300 text-black text-sm font-medium py-1 px-3 rounded-md"
+                  >
+                    {link.label} →
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </header>
+
+      {
+        longDescription.length > 0 && (
+          <section class="mt-12">
+            <h2 class="mb-2 font-bold text-2xl">Sobre el proyecto</h2>
+            <div class="flex flex-col gap-3">
+              {longDescription.map((paragraph) => (
+                <p class="leading-relaxed">{paragraph}</p>
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      {
+        skills.length > 0 && (
+          <section class="mt-12">
+            <h2 class="mb-2 font-bold text-2xl">Tecnologías y habilidades</h2>
+            <ul class="inline-flex gap-2 flex-wrap mt-2">
+              {skills.map((skill) => (
+                <li class="rounded-md bg-gray-300 text-black font-semibold px-3 py-1 flex items-center content-start">
+                  {skill.image && (
+                    <img
+                      src={skill.image}
+                      alt={skill.name}
+                      class="h-4 inline-block mr-1"
+                    />
+                  )}
+                  <span class="text-sm">{skill.name}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      <section class="mt-12">
+        <h2 class="mb-2 font-bold text-2xl">Capturas</h2>
+        <ul class="flex flex-col gap-6 mt-4">
+          {
+            screenshots.map((screenshot, index) => (
+              <li>
+                {screenshot.exists ? (
+                  <figure>
+                    <img
+                      src={screenshot.src}
+                      alt={`Captura ${index + 1} de ${name}`}
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full h-auto rounded-lg border border-gray-200 shadow-sm"
+                    />
+                  </figure>
+                ) : (
+                  <div class="no-print w-full aspect-video rounded-lg border border-dashed border-gray-300 bg-gray-50 flex flex-col items-center justify-center text-center px-4">
+                    <span class="text-sm font-semibold text-gray-500">
+                      Captura {index + 1} pendiente
+                    </span>
+                    <code class="mt-1 text-xs text-gray-400">
+                      public/projects-screenshots/{screenshot.file}
+                    </code>
+                  </div>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      {
+        highlights.length > 0 && (
+          <section class="mt-12">
+            <h2 class="mb-2 font-bold text-2xl">Highlights</h2>
+            <ul class="flex flex-wrap gap-2 mt-2">
+              {highlights.map((highlight) => (
+                <li class="bg-gray-200/70 hover:bg-gray-200 text-sm font-medium px-3 py-1 rounded-md transition-colors duration-300">
+                  {highlight}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      <footer class="mt-16 border-t border-gray-200 pt-6">
+        <a
+          href="/#proyectos"
+          class="text-sm text-gray-500 hover:text-black hover:underline transition-colors duration-300"
+        >
+          ← Volver al portafolio
+        </a>
+      </footer>
+    </section>
+  </main>
+</Layout>

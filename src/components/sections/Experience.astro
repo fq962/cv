@@ -1,0 +1,51 @@
+---
+import Section from "../Section.astro";
+
+import { work } from "../../../cv.json";
+import { getYear } from "../../consts";
+---
+
+<Section title="Experiencia laboral">
+  <ul class="flex flex-col gap-8">
+    {
+      work.map(
+        ({ name, startDate, endDate, position, summary, highlights, url }) => {
+          const years = `${getYear(startDate)} - ${getYear(endDate)}`;
+
+          return (
+            <>
+              <li>
+                <article>
+                  <header class="flex gap-4 justify-between">
+                    <div>
+                      <h3 class="text-lg hover:underline">
+                        <a href={url} title={`Ver ${name}`} target="_blank">
+                          {name}
+                        </a>
+                      </h3>
+                      <h4 class="text-lg">{position}</h4>
+                    </div>
+                    <time class="text-gray-600 text-xs md:text-sm text-nowrap">
+                      {years}
+                    </time>
+                  </header>
+
+                  <footer>
+                    <p class="mt-1">{summary}</p>
+                  </footer>
+                </article>
+                <ul class="mt-2 gap-2 flex flex-wrap">
+                  {highlights.map((highlight) => (
+                    <li class="bg-gray-200/70 hover:bg-gray-200 text-sm font-medium px-3 py-1 rounded-md transition-colors duration-300">
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            </>
+          );
+        }
+      )
+    }
+  </ul>
+</Section>

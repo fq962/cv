@@ -1,0 +1,168 @@
+---
+import { basics } from "../../cv.json";
+import { SITE, KEYWORDS, absoluteUrl, truncate } from "../consts";
+
+export interface Props {
+  title: string;
+  description: string;
+  /** Ruta relativa a la imagen social. Se resuelve a URL absoluta. */
+  image?: string;
+  imageAlt?: string;
+  type?: "website" | "profile" | "article";
+  keywords?: string[];
+  noindex?: boolean;
+  /** Fragmentos JSON-LD que se añaden al @graph de la página. */
+  schema?: unknown[];
+  /** Metadatos extra de `article:*` para las páginas de proyecto. */
+  article?: {
+    section?: string;
+    tags?: string[];
+  };
+}
+
+const {
+  title,
+  description,
+  image = SITE.ogImage,
+  imageAlt = `${basics.name} — ${basics.label}`,
+  type = "website",
+  keywords = KEYWORDS,
+  noindex = false,
+  schema = [],
+  article,
+} = Astro.props;
+
+const canonical = absoluteUrl(Astro.url.pathname);
+const ogImage = absoluteUrl(image);
+const metaDescription = truncate(description);
+
+const [firstName, ...lastNameParts] = basics.name.split(" ");
+const lastName = lastNameParts.join(" ");
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": schema,
+};
+---
+
+{/* ── Básicos ─────────────────────────────────────────────── */}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={metaDescription} />
+<meta name="keywords" content={keywords.join(", ")} />
+<meta name="author" content={basics.name} />
+<meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonical} />
+
+{/* ── Indexación ──────────────────────────────────────────── */}
+<meta
+  name="robots"
+  content={noindex
+    ? "noindex, nofollow"
+    : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+/>
+<meta
+  name="googlebot"
+  content={noindex
+    ? "noindex, nofollow"
+    : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+/>
+
+{/* ── Open Graph (Facebook, LinkedIn, WhatsApp, Telegram, Slack, Discord…) ── */}
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={SITE.locale} />
+{
+  SITE.localeAlternates.map((locale) => (
+    <meta property="og:locale:alternate" content={locale} />
+  ))
+}
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:secure_url" content={ogImage} />
+<meta property="og:image:type" content={SITE.ogImageType} />
+<meta property="og:image:width" content={String(SITE.ogImageWidth)} />
+<meta property="og:image:height" content={String(SITE.ogImageHeight)} />
+<meta property="og:image:alt" content={imageAlt} />
+
+{
+  type === "profile" && (
+    <>
+      <meta property="profile:first_name" content={firstName} />
+      <meta property="profile:last_name" content={lastName} />
+      <meta
+        property="profile:username"
+        content={
+          basics.profiles.find(({ network }) => network === "GitHub")?.username ??
+          basics.name
+        }
+      />
+    </>
+  )
+}
+
+{
+  type === "article" && (
+    <>
+      <meta property="article:author" content={basics.name} />
+      {article?.section && (
+        <meta property="article:section" content={article.section} />
+      )}
+      {article?.tags?.map((tag) => <meta property="article:tag" content={tag} />)}
+    </>
+  )
+}
+
+{/* ── X / Twitter ─────────────────────────────────────────── */}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={metaDescription} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={imageAlt} />
+
+{/* ── Iconos y PWA ────────────────────────────────────────── */}
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="apple-mobile-web-app-title" content={SITE.shortName} />
+<meta name="application-name" content={SITE.shortName} />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="msapplication-TileColor" content={SITE.themeColor} />
+<meta name="msapplication-TileImage" content="/icon-192.png" />
+<meta name="color-scheme" content="light" />
+<meta
+  name="theme-color"
+  media="(prefers-color-scheme: light)"
+  content={SITE.themeColor}
+/>
+<meta
+  name="theme-color"
+  media="(prefers-color-scheme: dark)"
+  content={SITE.themeColorDark}
+/>
+<meta name="format-detection" content="telephone=no" />
+
+{/* ── Geolocalización (SEO local) ─────────────────────────── */}
+<meta name="geo.region" content={basics.location.countryCode} />
+<meta name="geo.placename" content={basics.location.city} />
+
+{/* ── rel="me" para verificación de perfiles ──────────────── */}
+{basics.profiles.map(({ url }) => <link rel="me" href={url} />)}
+<link rel="me" href={`mailto:${basics.email}`} />
+
+{/* ── Datos estructurados ─────────────────────────────────── */}
+{
+  schema.length > 0 && (
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(jsonLd)}
+    />
+  )
+}

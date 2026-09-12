@@ -1,0 +1,9 @@
+---
+// se ejecuta en el servidor o en build time <----
+const { title, id } = Astro.props;
+---
+
+<section id={id} class="max-w-[700px] mx-auto mt-[48px] scroll-mt-8">
+  {title && <h2 class="mb-2 font-bold text-2xl">{title}</h2>}
+  <slot />
+</section>

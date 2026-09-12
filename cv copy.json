@@ -1,0 +1,327 @@
+{
+  "basics": {
+    "name": "David F. Quintanilla",
+    "label": "Ingeniero de Software con más de 2 años de experiencia",
+    "email": "df.quintanillah@gmail.com",
+    "phone": "+504  31433099",
+    "url": "",
+    "summary": "Con más de 4 años de experiencia como desarrollador web y backend, he trabajado en una amplia variedad de proyectos, desde la creación de aplicaciones web robustas hasta la implementación de soluciones backend escalables. Me apasiona la tecnología y actualizo constantemente mis habilidades, lo que me permite mantenerme a la vanguardia de las últimas tendencias y herramientas para ofrecer soluciones innovadoras y eficientes de forma constante.",
+    "location": {
+      "address": "https://maps.app.goo.gl/EPuFrrn771t94kAE9",
+      "postalCode": "21104",
+      "city": "San Pedro Sula",
+      "countryCode": "HN",
+      "region": "Honduras"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "df962",
+        "url": "https://github.com/fq962"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "fernando-quintanilla",
+        "url": "https://www.linkedin.com/in/fernando-quintanilla-6349951a0/"
+      },
+      {
+        "network": "Instagram",
+        "username": "df.quintanillah",
+        "url": "https://www.instagram.com/df.quintanillah"
+      },
+      {
+        "network": "email",
+        "username": "df.quintanillah@gmail.com",
+        "url": "mailto:df.quintanillah@gmail.com"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Allas Repuestos",
+      "position": "Ingeniero de Software",
+      "url": "https://allasrepuestos.store/",
+      "startDate": "2021-10-01",
+      "endDate": null,
+      "summary": "Soy desarrollador de software con experiencia en múltiples tecnologías de frontend, backend, base de datos y desarrollo móvil. Actualmente, desempeño el rol de líder de equipo, donde me encargo de analizar y definir los requerimientos de software de nuestros clientes, garantizando que las soluciones desarrolladas cumplan con sus necesidades. Además, gestiono un equipo de desarrollo, coordinando la ejecución de los proyectos desde su planificación hasta su implementación final, asegurando la calidad y eficiencia en cada etapa del proceso.",
+      "highlights": [
+        "Angular",
+        "Typescript",
+        "NestJS",
+        "PostgreSQL",
+        "Jenkins",
+        "Flutter",
+        "PM2",
+        "Metodología Scrum",
+        "Jira",
+        "Git",
+        "Bitbucket"
+      ]
+    },
+    {
+      "name": "Freelancer",
+      "position": "Freelancer",
+      "url": "",
+      "startDate": "2020",
+      "endDate": null,
+      "summary": "Como freelancer, desarrollé tres aplicaciones web de tipo Single Page Application (SPA) para clientes en diferentes industrias. Estos proyectos incluyeron la creación de sitios web para Fitech, Dr. Will Fernández Cirujano, e iBroom Cleaning. En estos proyectos, utilicé WordPress como la plataforma principal, aprovechando el plugin Elementor para la construcción de interfaces, junto con HTML y CSS para personalizar y optimizar la experiencia del usuario. Estas aplicaciones web fueron diseñadas para ser altamente funcionales y fáciles de navegar, cumpliendo con las necesidades específicas de cada cliente y demostrando mi capacidad para manejar proyectos de principio a fin en entornos freelance.",
+      "highlights": ["HTML", "CSS", "Wordpress", "Elementor"]
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "Ceutec - Universidad Tecnológica de Honduras",
+      "url": "https://ceutec.hn/",
+      "area": "Ingeniero en Sistemas",
+      "studyType": "Ingeniería",
+      "startDate": null,
+      "endDate": null,
+      "score": "5.0",
+      "courses": ["C++", "C#", "Java", "MySQL", "Angular", "Flutter"]
+    }
+  ],
+  "awards": [],
+  "certificates": [
+    {
+      "name": "Angular - The Complete Guide (2024 Edition)",
+      "date": "2023-04-28",
+      "issuer": "Udemy Business",
+      "url": "https://udemy-certificate.s3.amazonaws.com/image/UC-1e6f4e18-e69d-467a-9e96-8b7f6a836739.jpg"
+    },
+    {
+      "name": "NestJS: The Complete Developer's Guide",
+      "date": "2022-10-09",
+      "issuer": "Udemy Business",
+      "url": "https://udemy-certificate.s3.amazonaws.com/image/UC-4dfdddc2-2747-4658-a68b-31af5e668800.jpg"
+    },
+    {
+      "name": "Flutter & Dart - The Complete Guide",
+      "date": "2023-05-10",
+      "issuer": "Udemy Business",
+      "url": "https://udemy-certificate.s3.amazonaws.com/image/UC-4723464e-7e88-470e-84f7-f4a8be1e8edd.jpg"
+    },
+    {
+      "name": "Agile Fundamentals: Including Scrum & Kanban",
+      "date": "2023-02-10",
+      "issuer": "Udemy Business",
+      "url": "https://udemy-certificate.s3.amazonaws.com/image/UC-181ce9eb-3b6f-4f2f-bf00-46911ffa0bde.jpg"
+    },
+    {
+      "name": "SQL and PostgreSQL: The Complete Developer's Guide",
+      "date": "2023-01-17",
+      "issuer": "Udemy Business",
+      "url": "https://udemy-certificate.s3.amazonaws.com/image/UC-06b6396b-0a40-46d3-bb22-6802d5997291.jpg"
+    },
+    {
+      "name": "The Git & Github Bootcamp",
+      "date": "2023-01-23",
+      "issuer": "Udemy Business",
+      "url": "https://udemy-certificate.s3.amazonaws.com/image/UC-2068586b-5188-4e4b-8f90-812c1e6c16fa.jpg"
+    }
+  ],
+  "publications": [],
+  "skills": [
+    {
+      "name": "Angular",
+      "level": "Avanzado",
+      "keywords": ["Desarrollo Web", "Frontend", "UI"]
+    },
+    {
+      "name": "Astro",
+      "level": "Básico",
+      "keywords": ["Desarrollo Web", "Frontend"]
+    },
+    {
+      "name": "React",
+      "level": "Básico",
+      "keywords": []
+    },
+    {
+      "name": "Next.js",
+      "level": "Intermedio",
+      "keywords": ["Desarrollo Web", "Frontend"]
+    },
+    {
+      "name": "NodeJS",
+      "level": "Avanzado",
+      "keywords": ["Desarrollo Web", "Backend", "JavaScript", "Servidor"]
+    },
+    {
+      "name": "PostgreSQL",
+      "level": "Avanzado",
+      "keywords": [
+        "Bases de Datos",
+        "SQL",
+        "Almacenamiento de Datos",
+        "Backend"
+      ]
+    },
+    {
+      "name": "HTML",
+      "level": "Master",
+      "keywords": ["Desarrollo Web", "Frontend"]
+    },
+    {
+      "name": "CSS",
+      "level": "Master",
+      "keywords": ["Desarrollo Web", "Frontend", "Diseño Responsive"]
+    },
+    {
+      "name": "Tailwind",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "CSS Framework",
+        "Diseño Responsive"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "level": "Master",
+      "keywords": ["Desarrollo Web", "Frontend", "Backend", "Fullstack"]
+    },
+    {
+      "name": "TypeScript",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "Backend",
+        "JavaScript Superset"
+      ]
+    },
+    {
+      "name": "Git",
+      "level": "Avanzado",
+      "keywords": ["Control de Versiones", "Colaboración", "Código Fuente"]
+    },
+    {
+      "name": "Bitbucket",
+      "level": "Avanzado",
+      "keywords": [
+        "Control de Versiones",
+        "Colaboración",
+        "Código Fuente",
+        "Git"
+      ]
+    },
+    {
+      "name": "Jira",
+      "level": "Avanzado",
+      "keywords": [
+        "Gestión de Proyectos",
+        "Gestión de Tareas",
+        "Gestión de Equipos"
+      ]
+    },
+    {
+      "name": "Confluence",
+      "level": "Avanzado",
+      "keywords": [
+        "Gestión de Proyectos",
+        "Gestión de Tareas",
+        "Gestión de Equipos"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "fluency": "Nativo"
+    },
+    {
+      "language": "Inglés",
+      "fluency": "Intermedio"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Video Juegos",
+      "keywords": [
+        "Estrategia",
+        "videojuegos",
+        "esports",
+        "gaming"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Daniel Ochoa",
+      "reference": "Licenciado en Mercadotecnia y Negocios Internacionales",
+      "phoneNumber": "+504 9954-9018"
+    },
+    {
+      "name": "Luisa Espinoza",
+      "reference": "Ingeniero Industrial y Sistemas",
+      "phoneNumber": "+504 9709-7970"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Palette Wizard",
+      "isActive": true,
+      "description": "Desarrollé esta aplicación en colaboración con un compañero. Palette Wizard utiliza inteligencia artificial para generar paletas de colores personalizadas. Los usuarios pueden ingresar una idea, un color base o cualquier concepto, y la herramienta creará una paleta única junto con sus tonos (shades). El objetivo principal es inspirar y facilitar a diseñadores y creativos en su trabajo visual.",
+      "highlights": ["React", "Next.js", "Typescript", "Tailwind", "OpenAI"],
+      "url": "https://palette-wizard.vercel.app/"
+    },    
+    {
+      "name": "Find Your Prices",
+      "isActive": false,
+      "description": "Desarrollé un proyecto en colaboración con un compañero donde realizamos scraping a varias páginas web de productos en Honduras. Tras obtener la información, la sanitizamos y la integramos en nuestra plataforma, permitiendo a los usuarios buscar cualquier producto de manera sencilla. El objetivo es que puedan visualizar rápidamente qué tiendas tienen el producto disponible y a qué precio. Actualmente, nuestra plataforma incluye datos de dos tiendas, pero estamos en proceso de agregar más para ampliar las opciones de búsqueda y precios.",
+      "highlights": ["React", "Typescript", "Tailwind", "NestJS", "PostgreSQL", "Web Scrapping", "Zustand"],
+      "url": null
+    },
+    {
+      "name": "Fermodoro",
+      "isActive": true,
+      "description": "Decidí expandir mis conocimientos en desarrollo web aprendiendo React. Desarrollé un proyecto personal llamado Fermodoro, una aplicación de temporizador Pomodoro inspirada en \"pomodoro.io\". Este proyecto no solo me permitió entender los conceptos fundamentales de React, sino que también me dio la oportunidad de trabajar con Tailwind. Al desarrollar Fermodoro, pude consolidar mis habilidades en la creación de interfaces de usuario dinámicas y en la utilización de estilos personalizados, lo que me ha preparado para enfrentar desafíos más complejos en el desarrollo frontend.",
+      "highlights": ["React", "Typescript", "Tailwind"],
+      "url": "https://fermodoro.site/"
+    },
+    {
+      "name": "Reclutamiento y Bolsa de Empleo",
+      "isActive": true,
+      "description": "Desempeñando un rol de líder de proyecto, encargado de reunirme con el cliente y levantar los requerimientos de usuario. Desarrollé el prototipo en Figma y definí los requerimientos técnicos. Una vez aprobado el diseño, también participé como desarrollador en varias partes del sistema. El objetivo fue digitalizar los documentos y procesos de contratación, desde la solicitud de empleo hasta la creación del expediente digital del candidato. Además, implementamos una bolsa de empleo en la que personas externas pueden aplicar a las vacantes disponibles de la empresa.",
+      "highlights": ["PostgreSQL", "Angular", "NestJS", "Figma", "Jenkins", "Metodología Scrum", "Jira", "Bitbucket"],
+      "url": "https://allasrepuestos.com/bolsa_de_empleo.html"
+    },
+    {
+      "name": "Handhelds App",
+      "isActive": true,
+      "description": "Participé como desarrollador principal, utilizando Flutter y Dart para crear una aplicación destinada a dispositivos handheld. El objetivo del sistema fue optimizar la gestión en centros de distribución, permitiendo a los empleados escanear productos, realizar requisiciones entre sucursales, controlar el inventario, y ordenar productos en estantes. Además, la aplicación facilitó el proceso de préstamos internos de productos a los vendedores y la recepción de nueva mercancía, mejorando así la eficiencia en las operaciones logísticas.",
+      "highlights": ["PostgreSQL", "Flutter", "Bitbucket", "Metodología Scrum", "Typescript"],
+      "url": null
+    },
+    {
+      "name": "Seguimiento de Clientes",
+      "isActive": true,
+      "description": "Teniendo una participación como desarrollador fullstack, encargándome de la estructura de la base de datos, parte del API y del front-end. La herramienta permite a los vendedores hacer seguimiento de sus clientes a través de tareas, como agendar llamadas, enviar cotizaciones o felicitar en cumpleaños. Además, incluye un calendario para organizar sus actividades semanales. Los gerentes pueden asignar o quitar clientes a los vendedores y generar reportes de ventas detallados, lo que facilita el análisis del rendimiento de sus equipos.",
+      "highlights": ["PostgreSQL", "Angular", "JS", "Adobe XD", "Bitbucket"],
+      "url": null
+    },
+    {
+      "name": "Plan de Compras",
+      "isActive": true,
+      "description": "Desempeñando un rol de analista de software, encargándome de tomar los requerimientos y programar el sistema para el equipo de compras de ALLAS Repuestos. El sistema ayuda a organizar los pedidos, sugiere compras y optimiza las herramientas utilizadas, siguiendo el flujo de compras de la empresa. Desde la cotización con un proveedor hasta la recepción de la mercancía en los centros de distribución, el sistema facilita y automatiza las tareas clave del proceso.",
+      "highlights": ["PostgreSQL", "Angular", "NestJS", "Figma", "Metodología Scrum", "Jira", "Bitbucket"],
+      "url": null
+    },
+    {
+      "name": "Pagos de Nomina y Bonificaciones",
+      "isActive": true,
+      "description": "Liderando un equipo de 3 personas en el desarrollo de un sistema para RRHH que gestiona los pagos de nóminas y bonificaciones de los empleados. La herramienta permite revisar las horas trabajadas por cada empleado, generar una proforma de la nomina y planilla de bonificacion para su revisión y posteriormente, crear la planilla definitiva, una vez generada el sistema se encarga de generar el archivo especifico para relaizar el pago en los bancos, garantizando que los pagos se realicen automáticamente en la fecha designada cada mes.",
+      "highlights": ["PostgreSQL", "Angular", "NestJS", "Figma", "Metodología Scrum", "Jira", "Bitbucket"],
+      "url": null
+    },
+    {
+      "name": "Canje de Premios",
+      "isActive": true,
+      "description": "En el proyecto, trabajé como desarrollador implementando un sistema para que los clientes de ALLAS Repuestos pudieran acumular puntos en sus tarjetas y canjearlos por premios. El sistema permite a los clientes acceder a un catálogo de premios, ver la información de los premios disponibles y gestionar el proceso de canje. De esta manera, los clientes pueden seleccionar su premio y llevarlo a casa de manera sencilla y rápida.",
+      "highlights": ["PostgreSQL", "Angular", "JS", "Bitbucket"],
+      "url": null
+    }
+  ]
+}

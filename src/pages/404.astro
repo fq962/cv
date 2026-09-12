@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { basics } from "../../cv.json";
+---
+
+<Layout
+  title={`Página no encontrada — ${basics.name}`}
+  description="La página que buscás no existe o cambió de dirección."
+  noindex
+>
+  <main class="m-auto w-full p-4 md:p-16">
+    <section class="max-w-[700px] mx-auto mt-[48px]">
+      <p class="text-sm text-gray-500">Error 404</p>
+      <h1 class="mt-2 text-4xl md:text-5xl font-bold text-black">
+        Esta página no existe
+      </h1>
+      <p class="mt-4">
+        Puede que el enlace esté roto o que la página haya cambiado de dirección.
+      </p>
+      <a
+        href="/"
+        class="inline-block mt-6 bg-gray-200/70 hover:bg-gray-200 transition-colors duration-300 text-black text-sm font-medium py-1 px-3 rounded-md"
+      >
+        Volver al portafolio →
+      </a>
+    </section>
+  </main>
+</Layout>

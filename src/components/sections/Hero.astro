@@ -1,0 +1,117 @@
+---
+import { basics } from "../../../cv.json";
+import Section from "../../components/Section.astro";
+import Mail from "../../icons/Mail.astro";
+import Phone from "../../icons/Phone.astro";
+import X from "../../icons/X.astro";
+import LinkedIn from "../../icons/LinkedIn.astro";
+import GitHub from "../../icons/GitHub.astro";
+import Instagram from "../../icons/Instagram.astro";
+import WorldMap from "../../icons/WorldMap.astro";
+import type { SocialIcon } from "../../types";
+
+const { name, label, image, location, profiles, phone, email } = basics;
+const { city, region, address } = location;
+
+const SOCIAL_ICONS: SocialIcon = {
+  GitHub,
+  LinkedIn,
+  X,
+  Instagram,
+};
+
+// El correo ya tiene su propio botón dedicado arriba (usa basics.email), así
+// que se excluye de esta lista para no duplicar el ícono.
+const socialProfiles = profiles.filter(({ network }) => network !== "email");
+
+const linkedInfo = profiles.find(({ network }) => network === "LinkedIn");
+const linkedUrl = linkedInfo?.url;
+
+const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
+---
+
+<Section>
+  <div
+    class="flex flex-col md:flex-row md:justify-between justify-center items-center gap-4"
+  >
+    <div
+      class="info flex flex-col gap-3 justify-center order-2 md:order-1 text-center items-center md:items-start"
+    >
+      <h1
+        id="name"
+        class="text-4xl font-semibold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.blue.800),theme(colors.blue.300),theme(colors.sky.800),theme(colors.green.800),theme(colors.sky.900),theme(colors.blue.300),theme(colors.blue.800))] bg-[length:200%_auto] animate-gradient"
+      >
+        {name}
+      </h1>
+      <h2 class="text-xl text-gray-700">{label}</h2>
+      <a
+        href={address}
+        target="_blank"
+        class="flex items-center gap-2 hover:underline text-gray-500 text-sm"
+      >
+        <WorldMap />
+        {city}, {region}
+      </a>
+      <footer class="print">
+        {printInfo}
+      </footer>
+      <footer class="no-print flex gap-3 text-center justify-center">
+        {
+          email && (
+            <a
+              class="hover:text-blue-500 border border-solid border-gray-300 p-2 rounded-md text-gray-500 hover:bg-gray-200 transition-colors duration-300 ease-in-out"
+              href={`mailto:${email}`}
+              title={`Enviar un correo electrónico a ${name} al correo ${email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Mail />
+            </a>
+          )
+        }
+        {
+          phone && (
+            <a
+              class="hover:text-blue-500 border border-solid border-gray-300 p-2 rounded-md text-gray-500 hover:bg-gray-200 transition-colors duration-300 ease-in-out"
+              href={`tel:${phone}`}
+              title={`Llamar por teléfono a ${name} al número ${phone}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Phone />
+            </a>
+          )
+        }
+        {
+          socialProfiles.map(({ network, url }) => {
+            const Icon = SOCIAL_ICONS[network];
+
+            return (
+              <a
+                class="hover:text-blue-500 border border-solid border-gray-300 p-2 rounded-md text-gray-500 hover:bg-gray-200 transition-colors duration-300 ease-in-out"
+                href={url}
+                title={`Visitar el perfil de ${name} en ${network}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon />
+              </a>
+            );
+          })
+        }
+      </footer>
+    </div>
+    <figure class="flex justify-center order-1 md:order-2 aspect-square flex-1 size-44 items-center">
+      <img class="h-full w-auto rounded-3xl aspect-square" src={image} alt={name} />
+    </figure>
+  </div>
+</Section>
+
+<style>
+  @media print {
+    #name {
+      background: none !important;
+      color: black !important;
+    }
+  }
+</style>

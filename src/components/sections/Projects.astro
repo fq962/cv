@@ -1,0 +1,63 @@
+---
+import Section from "../Section.astro";
+
+import { projects } from "../../../cv.json";
+---
+
+<Section title="Proyectos" id="proyectos">
+  <ul
+    class="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 -mx-4 sm:mx-0 mt-3"
+  >
+    {
+      projects.map(({ id, url, description, highlights, name, isActive }) => {
+        const detailUrl = id ? `/proyectos/${id}` : null;
+        const linkUrl = detailUrl ?? url;
+
+        return (
+          <li class="group relative">
+            <article class="border border-none border-gray-200/70 rounded-lg p-4 h-full flex flex-col gap-4 shadow-none md:shadow-sm md:border-solid transition-colors duration-300 md:group-hover:border-gray-400/70">
+              <header class="flex-1">
+                <h3 class="mb-1 text-black font-bold text-lg">
+                  {!linkUrl ? (
+                    name
+                  ) : (
+                    <a
+                      href={linkUrl}
+                      title={
+                        detailUrl
+                          ? `Ver el detalle de ${name}`
+                          : `Ver el proyecto ${name}`
+                      }
+                      target={detailUrl ? "_self" : "_blank"}
+                      class="text-black hover:underline before:absolute before:inset-0 before:content-['']"
+                    >
+                      {name}
+                    </a>
+                  )}
+                  {isActive && <span class="text-green-500">•</span>}
+                </h3>
+                <p class="text-sm text-gray-500 leading-snug mb-1">
+                  {description}
+                </p>
+                {detailUrl && (
+                  <p class="no-print text-xs text-gray-400 mt-2 transition-colors duration-300 md:group-hover:text-gray-700">
+                    Ver detalle del proyecto →
+                  </p>
+                )}
+              </header>
+              <footer class="flex flex-wrap gap-1 text-[0.6rem]">
+                {highlights.map((highlight) => {
+                  return (
+                    <span class="bg-gray-200/70 group-hover:bg-gray-200 transition-colors duration-300 text-black font-medium py-1 px-2 rounded-md">
+                      {highlight}
+                    </span>
+                  );
+                })}
+              </footer>
+            </article>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Section>

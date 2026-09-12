@@ -1,0 +1,128 @@
+---
+import Section from "../Section.astro";
+
+import { certificates } from "../../../cv.json";
+
+const featured = certificates.filter(({ featured }) => featured);
+const rest = certificates.filter(({ featured }) => !featured);
+---
+
+<Section title="Certificados">
+  <ul
+    class="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 -mx-4 sm:mx-0"
+  >
+    {
+      featured.map(({ category, issuer, name, url }) => {
+        return (
+          <li>
+            <article class="border border-gray-200 rounded-lg p-4 h-full flex flex-col gap-4 shadow-none border-none md:border-solid md:shadow-sm">
+              <header class="flex-1">
+                <h3 class="mb-1 text-black font-bold">
+                  <a
+                    href={url}
+                    title={`Ver el certificado ${name}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-black hover:underline"
+                  >
+                    {name}
+                  </a>
+                </h3>
+              </header>
+              <footer class="flex flex-wrap gap-1 text-[0.6rem]">
+                <span class="bg-gray-200 text-black font-medium py-1 px-2 rounded-md">
+                  {category}
+                </span>
+                <span class="bg-gray-200 text-black font-medium py-1 px-2 rounded-md">
+                  {issuer}
+                </span>
+              </footer>
+            </article>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  {
+    rest.length > 0 && (
+      <>
+        <ul
+          id="more-certificates"
+          data-open="false"
+          class="hidden print:grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 -mx-4 sm:mx-0 mt-4"
+        >
+          {rest.map(({ category, issuer, name, url }) => {
+            return (
+              <li>
+                <article class="border border-gray-200 rounded-lg p-4 h-full flex flex-col gap-4 shadow-none border-none md:border-solid md:shadow-sm">
+                  <header class="flex-1">
+                    <h3 class="mb-1 text-black font-bold">
+                      <a
+                        href={url}
+                        title={`Ver el certificado ${name}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-black hover:underline"
+                      >
+                        {name}
+                      </a>
+                    </h3>
+                  </header>
+                  <footer class="flex flex-wrap gap-1 text-[0.6rem]">
+                    <span class="bg-gray-200 text-black font-medium py-1 px-2 rounded-md">
+                      {category}
+                    </span>
+                    <span class="bg-gray-200 text-black font-medium py-1 px-2 rounded-md">
+                      {issuer}
+                    </span>
+                  </footer>
+                </article>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 px-4 sm:px-0">
+          <button
+            id="toggle-certificates"
+            type="button"
+            aria-expanded="false"
+            aria-controls="more-certificates"
+            class="no-print bg-gray-200/70 hover:bg-gray-200 transition-colors duration-300 text-black text-sm font-medium py-1 px-3 rounded-md"
+          >
+            Ver más ({rest.length})
+          </button>
+          {/* Deshabilitado: certificatesUrl (cv.json) apunta a la hoja de cálculo de Milton, no aplica para este CV.
+          <a
+            href={certificatesUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-gray-500 hover:text-black hover:underline transition-colors duration-300"
+          >
+            Ver la lista completa de cursos →
+          </a>
+          */}
+        </div>
+      </>
+    )
+  }
+</Section>
+
+<script>
+  const button = document.getElementById("toggle-certificates");
+  const list = document.getElementById("more-certificates");
+
+  button?.addEventListener("click", () => {
+    if (!list) return;
+
+    const isOpen = list.dataset.open === "true";
+    const total = list.children.length;
+
+    list.dataset.open = String(!isOpen);
+    list.classList.toggle("hidden", isOpen);
+    list.classList.toggle("grid", !isOpen);
+    button.setAttribute("aria-expanded", String(!isOpen));
+    button.textContent = isOpen ? `Ver más (${total})` : "Ver menos";
+  });
+</script>
